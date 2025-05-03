@@ -1,8 +1,8 @@
 
 export default function Home() {
   return (
-    <div className="font-poppins">
+    <main className="font-poppins">
       <p className="font-sans">homepage (tba table)</p>
-    </div>
+    </main>
   );
 }
