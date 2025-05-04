@@ -12,30 +12,30 @@ export default function Header() {
     <header className='flex gap-2 items-center justify-center bg-foreground text-background p-2'>
       <div className='absolute left-2'>
         <h1 className='text-xl font-semibold'>
-          DNCalc <span className='text-sm font-normal'>by limau</span>
+          DNCalc <Link target='_blank' href="https://github.com/rfsyhb/" className='text-sm font-normal text-blue-700 hover:font-semibold'>by limau</Link>
         </h1>
       </div>
       <nav className='flex gap-4'>
         <Link
           href='/'
-          className={`rounded-md ${
-            isHome ? 'bg-blue-600 text-white' : 'hover:bg-gray-400'
+          className={`rounded-md px-2 ${
+            isHome ? 'bg-slate-700 text-white' : 'hover:bg-gray-400'
           }`}
         >
           Home
         </Link>
         <Link
           href='/dashboard'
-          className={`rounded-md ${
-            isDashboard ? 'bg-blue-600 text-white' : 'hover:bg-gray-400'
+          className={`rounded-md px-2 ${
+            isDashboard ? 'bg-slate-700 text-white' : 'hover:bg-gray-400'
           }`}
         >
           Dashboard
         </Link>
         <Link
           href='/item'
-          className={`rounded-md ${
-            isItem ? 'bg-blue-600 text-white' : 'hover:bg-gray-400'
+          className={`rounded-md px-2 ${
+            isItem ? 'bg-slate-700 text-white' : 'hover:bg-gray-400'
           }`}
         >
           Item Prices

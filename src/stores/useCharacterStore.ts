@@ -5,6 +5,7 @@ interface CharacterState {
   characters: string[];
   addCharacter: (name: string) => void;
   removeCharacter: (name: string) => void;
+  clearCharacters: () => void;
 }
 
 export const useCharacterStore = create<CharacterState>()(
@@ -17,6 +18,8 @@ export const useCharacterStore = create<CharacterState>()(
         set((state) => ({
           characters: [...state.characters.filter((c) => c !== name)],
         })),
+        clearCharacters: () =>
+          set({ characters: [] }),      // ← reset ke array kosong
     }),
     { name: 'dncalc-characters' },
   ),

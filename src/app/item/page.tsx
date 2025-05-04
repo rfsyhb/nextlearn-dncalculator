@@ -5,8 +5,9 @@ export default function ItemPricePage() {
   const items = itemMetas;
 
   return (
-    <main className='flex justify-center items-center h-full'>
-      <div className='p-4 w-200 flex flex-wrap gap-4'>
+    <main className='flex flex-col justify-center items-center h-full'>
+      <h2 className='text-xl font-semibold'>Daftar harga item di Trading House</h2>
+      <div className='p-4 w-200 flex flex-wrap gap-4 justify-center'>
         {items.map((item) => (
           <ItemCard
             key={item.key}

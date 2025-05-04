@@ -7,6 +7,7 @@ type Inventory = Record<ItemKey, number>;
 interface InventoryState {
   inventories: Record<string, Inventory>; // chjaracter name -> inventory
   setItemCount: (character: string, itemKey: ItemKey, count: number) => void;
+  clearInventories: () => void;
 }
 
 export const useInventoryStore = create<InventoryState>()(
@@ -23,6 +24,7 @@ export const useInventoryStore = create<InventoryState>()(
             },
           },
         })),
+      clearInventories: () => set({ inventories: {} })
     }),
     { name: 'dncalc-inventory' },
   ),

@@ -4,12 +4,17 @@ import CharacterCard from './_components/CharacterCard';
 import CharacterInventory from './_components/CharacterInventory';
 import { useCharacterStore } from '@/stores/useCharacterStore';
 import { useState } from 'react';
+import { useInventoryStore } from '@/stores/useInventoryStore';
+import { usePriceStore } from '@/stores/usePriceStore';
 
 export default function Dashboard() {
   // global state
   const characters = useCharacterStore((s) => s.characters);
   const addCharacter = useCharacterStore((s) => s.addCharacter);
   const removeCharacter = useCharacterStore((s) => s.removeCharacter);
+  const clearCharacters = useCharacterStore((s) => s.clearCharacters);
+  const clearInventories = useInventoryStore((s) => s.clearInventories);
+  const clearPrices = usePriceStore((s) => s.clearPrices);
 
   // local state
   const [newChar, setNewChar] = useState<string>('');
@@ -49,15 +54,35 @@ export default function Dashboard() {
           <div className='rounded-md bg-gray-700 p-2 min-w-70 max-w-70 h-fit flex flex-row gap-2'>
             <input
               type='text'
-              className='border-1 flex-1'
+              className='flex-1 p-1 rounded-md'
               value={newChar}
               onChange={(e) => setNewChar(e.target.value)}
               placeholder='Character Name'
             />
-            <button className='bg-blue-300' onClick={onAddCharacter}>
+            <button className='hover:bg-gray-800 cursor-pointer p-1 rounded-xl' onClick={onAddCharacter}>
               <Plus />
             </button>
           </div>
+        </div>
+        <div className="flex flex-row flex-wrap gap-2">
+          <button
+            onClick={clearCharacters}
+            className="px-4 py-2 bg-red-800 rounded hover:bg-red-700 text-white"
+          >
+            Clear All Characters
+          </button>
+          <button
+            onClick={clearInventories}
+            className="px-4 py-2 bg-red-800 rounded hover:bg-red-700 text-white"
+          >
+            Clear All Inventories
+          </button>
+          <button
+            onClick={clearPrices}
+            className="px-4 py-2 bg-red-800 rounded hover:bg-red-700 text-white"
+          >
+            Clear All Prices
+          </button>
         </div>
       </section>
       <section className='flex-1/3 p-20'>
