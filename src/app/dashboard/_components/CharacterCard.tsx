@@ -1,7 +1,5 @@
 'use client';
 import { PackagePlus, Trash, UserRound } from 'lucide-react';
-import CharacterItemList from './CharacterItemList';
-import { dummyInventory, dummyItemMetas } from '@/lib/dummyData';
 
 interface CharacterProps {
   name: string;
@@ -9,7 +7,7 @@ interface CharacterProps {
 
 export default function CharacterCard({ name }: CharacterProps) {
   return (
-    <div className='relative rounded-md bg-gray-700 p-2 min-w-70 max-w-70 flex flex-col gap-2'>
+    <div className='relative rounded-md bg-gray-700 p-2 min-w-70 max-w-70 flex flex-col gap-2 max-h-fit'>
       <div className='flex justify-between items-center gap-2'>
         <div className='flex flex-row justify-center items-center'>
           <UserRound className='w-10 h-10' />
@@ -36,7 +34,6 @@ export default function CharacterCard({ name }: CharacterProps) {
           </button>
         </div>
       </div>
-      <CharacterItemList inventory={dummyInventory} itemMetas={dummyItemMetas}/>
     </div>
   );
 }

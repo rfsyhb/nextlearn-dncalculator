@@ -27,7 +27,7 @@ export default function CharacterItemList({
             alt={item.key}
             width={25}
             height={25}
-            className='rounded-md'
+            className='rounded-md object-contain'
           />
           <span className='text-sm'>{item.quantity}</span>
         </div>
