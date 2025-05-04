@@ -35,8 +35,8 @@ export default function Dashboard() {
   }
 
   return (
-    <main className='font-poppins flex flex-row'>
-      <section className='flex-2/3 flex flex-wrap flex-row gap-3 h-fit'>
+    <main className='font-poppins flex flex-row h-full justify-center items-center'>
+      <section className='flex-2/3 flex flex-wrap flex-row gap-3 h-fit p-20'>
         {characters.map((name) => (
           <CharacterCard
             key={name}

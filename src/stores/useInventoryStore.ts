@@ -1,27 +1,29 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import { ItemKey } from '@/types/types';
+
+type Inventory = Record<ItemKey, number>;
 
 interface InventoryState {
-  // tiap character punya record item → jumlah
-  inventories: Record<string, Record<string, number>>;
-  setInventory: (character: string, itemKey: string, count: number) => void;
+  inventories: Record<string, Inventory>; // chjaracter name -> inventory
+  setItemCount: (character: string, itemKey: ItemKey, count: number) => void;
 }
 
 export const useInventoryStore = create<InventoryState>()(
   persist(
     (set) => ({
       inventories: {},
-      setInventory: (character, itemKey, count) =>
+      setItemCount: (character, itemKey, count) =>
         set((state) => ({
           inventories: {
             ...state.inventories,
             [character]: {
-              ...(state.inventories[character] || {}),
+              ...state.inventories[character ?? {}],
               [itemKey]: count,
             },
           },
         })),
     }),
-    { name: 'dncalc-inventories' },
+    { name: 'dncalc-inventory' },
   ),
 );
