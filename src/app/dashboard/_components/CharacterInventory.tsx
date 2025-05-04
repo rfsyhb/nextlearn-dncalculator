@@ -1,10 +1,28 @@
 import { dummyItemMetas } from '@/lib/dummyData';
+import { X } from 'lucide-react';
 import Image from 'next/image';
 
-export default function CharacterInventory() {
+interface CharacterInventoryProps {
+  currentCharacter: string | null;
+  closeInventory: () => void;
+}
+
+export default function CharacterInventory({
+  currentCharacter,
+  closeInventory,
+}: CharacterInventoryProps) {
   return (
-    <div className='flex flex-col gap-2 bg-gray-500 rounded-2xl p-4 min-h-fit'>
-      <h2 className='text-xl'>X&apos;s Inventory</h2>
+    <div
+      className={`flex flex-col gap-2 bg-gray-500 rounded-2xl p-4 ${
+        currentCharacter ? 'min-h-fit' : 'hidden'
+      }`}
+    >
+      <div className='flex flex-row justify-between items-center'>
+        <h2 className='text-xl'>{currentCharacter}&apos;s Inventory</h2>
+        <button className='cursor-pointer' onClick={closeInventory}>
+          <X />
+        </button>
+      </div>
       <div className='grid grid-cols-2 gap-1 min-w-fit'>
         {dummyItemMetas.map((item) => (
           <div
