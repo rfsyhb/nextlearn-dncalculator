@@ -46,6 +46,7 @@ export default function Dashboard() {
           <CharacterCard
             key={name}
             name={name}
+            currentCharacter={currentCharacter}
             onRemoveCharacter={onRemoveCharacter}
             onSetCurrentCharacter={onSetCurrentCharacter}
           />

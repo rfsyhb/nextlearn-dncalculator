@@ -3,13 +3,14 @@ import { PackagePlus, Trash, UserRound } from 'lucide-react';
 
 interface CharacterProps {
   name: string;
+  currentCharacter: string | null;
   onRemoveCharacter: (name: string) => void;
   onSetCurrentCharacter: (name: string) => void;
 }
 
-export default function CharacterCard({ name, onRemoveCharacter, onSetCurrentCharacter }: CharacterProps) {
+export default function CharacterCard({ name, currentCharacter, onRemoveCharacter, onSetCurrentCharacter }: CharacterProps) {
   return (
-    <div className='relative rounded-md bg-gray-700 p-2 min-w-70 max-w-70 flex flex-col gap-2 max-h-fit'>
+    <div className={`relative rounded-md bg-gray-700 p-2 min-w-70 max-w-70 flex flex-col gap-2 max-h-fit ${currentCharacter === name ? 'bg-yellow-600 outline-3 outline-yellow-500' : ''}`}>
       <div className='flex justify-between items-center gap-2'>
         <div className='flex flex-row justify-center items-center'>
           <UserRound className='w-10 h-10' />
