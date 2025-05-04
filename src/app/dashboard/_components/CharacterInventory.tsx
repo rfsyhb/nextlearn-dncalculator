@@ -1,8 +1,8 @@
-import { dummyItemMetas } from '@/lib/dummyData';
 import { useInventoryStore } from '@/stores/useInventoryStore';
 import { X } from 'lucide-react';
 import Image from 'next/image';
 import { ItemKey } from '@/types/types';
+import { itemMetas } from '@/lib/itemMeta';
 
 interface CharacterInventoryProps {
   currentCharacter: string | null;
@@ -30,7 +30,7 @@ export default function CharacterInventory({
       </div>
 
       <div className='grid grid-cols-2 gap-1 min-w-fit'>
-        {dummyItemMetas.map((item) => {
+        {itemMetas.map((item) => {
           const count = currentInventory[item.key as ItemKey] ?? 0;
 
           return (

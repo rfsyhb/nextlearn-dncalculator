@@ -6,10 +6,15 @@ export default function Header() {
   const pathName = usePathname();
   const isHome = pathName === '/';
   const isDashboard = pathName.startsWith('/dashboard');
+  const isItem = pathName.startsWith('/item');
 
   return (
-    <header className='flex justify-between items-center bg-foreground text-background'>
-      <h1 className='text-xl font-semibold'>DNCalc</h1>
+    <header className='flex gap-2 items-center justify-center bg-foreground text-background p-2'>
+      <div className='absolute left-2'>
+        <h1 className='text-xl font-semibold'>
+          DNCalc <span className='text-sm font-normal'>by limau</span>
+        </h1>
+      </div>
       <nav className='flex gap-4'>
         <Link
           href='/'
@@ -26,6 +31,14 @@ export default function Header() {
           }`}
         >
           Dashboard
+        </Link>
+        <Link
+          href='/item'
+          className={`rounded-md ${
+            isItem ? 'bg-blue-600 text-white' : 'hover:bg-gray-400'
+          }`}
+        >
+          Item Prices
         </Link>
       </nav>
     </header>
