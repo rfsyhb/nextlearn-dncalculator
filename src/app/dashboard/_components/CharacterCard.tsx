@@ -16,7 +16,7 @@ export default function CharacterCard({ name, currentCharacter, onRemoveCharacte
           <UserRound className='w-10 h-10' />
           <span className='font-medium'>{name}</span>
         </div>
-        <div className='flex flex-row gap-4 bg-slate-600 rounded-md p-2'>
+        <div className='flex flex-row gap-4 bg-slate-600 rounded-md p-2 shadow-md'>
           <button
             className='group relative cursor-pointer'
             onClick={() => onSetCurrentCharacter(name)}

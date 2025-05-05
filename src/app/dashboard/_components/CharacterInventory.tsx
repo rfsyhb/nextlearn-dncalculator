@@ -1,3 +1,5 @@
+'use client';
+
 import { useInventoryStore } from '@/stores/useInventoryStore';
 import { X } from 'lucide-react';
 import Image from 'next/image';
@@ -16,9 +18,26 @@ export default function CharacterInventory({
   const setItemCount = useInventoryStore((s) => s.setItemCount);
   const inventories = useInventoryStore((s) => s.inventories);
 
+  const setStartTime = useInventoryStore((s) => s.setStartTime);
+  const setEndTime = useInventoryStore((s) => s.setEndTime);
+  const removeStartTime = useInventoryStore((s) => s.removeStartTime);
+  const removeEndTime = useInventoryStore((s) => s.removeEndTime);
+  const times = useInventoryStore((s) => s.times);
+
   if (!currentCharacter) return null;
 
   const currentInventory = inventories[currentCharacter] ?? {};
+  const currentTime = times?.[currentCharacter];
+
+  const formatTime = (timestamp: number | null) => {
+    if (!timestamp) return 'belum set';
+    const date = new Date(timestamp);
+    return date.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    });
+  };
 
   return (
     <div className='flex flex-col gap-2 bg-gray-500 rounded-2xl p-4 min-h-fit'>
@@ -63,6 +82,63 @@ export default function CharacterInventory({
             </div>
           );
         })}
+      </div>
+
+      <div className='text-sm flex flex-col gap-1'>
+        <div className='flex flex-row justify-between items-center gap-2'>
+          <span className='text-lg'>{formatTime(currentTime?.startTime ?? null)}</span>
+          <div className='flex gap-1'>
+            <button
+              onClick={() => setStartTime(currentCharacter)}
+              disabled={!!currentTime?.startTime}
+              className={`px-3 py-1 rounded text-white ${
+                currentTime?.startTime
+                  ? 'hidden'
+                  : 'bg-green-800 hover:bg-green-700'
+              }`}
+            >
+              add start time
+            </button>
+            <button
+              onClick={() => removeStartTime(currentCharacter)}
+              disabled={!currentTime?.startTime}
+              className={`px-3 py-1 rounded text-white ${
+                !currentTime?.startTime
+                  ? 'hidden'
+                  : 'bg-red-800 hover:bg-red-700'
+              }`}
+            >
+              cancel
+            </button>
+          </div>
+        </div>
+        <div className='flex flex-row justify-between items-center gap-2'>
+          <span className='text-lg'>{formatTime(currentTime?.endTime ?? null)}</span>
+          <div className='flex gap-1'>
+            <button
+              onClick={() => setEndTime(currentCharacter)}
+              disabled={!!currentTime?.endTime}
+              className={`px-3 py-1 rounded text-white ${
+                currentTime?.endTime
+                  ? 'hidden'
+                  : 'bg-blue-800 hover:bg-blue-700'
+              }`}
+            >
+              add finish time
+            </button>
+            <button
+              onClick={() => removeEndTime(currentCharacter)}
+              disabled={!currentTime?.endTime}
+              className={`px-3 py-1 rounded text-white ${
+                !currentTime?.endTime
+                  ? 'hidden'
+                  : 'bg-red-800 hover:bg-red-700'
+              }`}
+            >
+              cancel
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

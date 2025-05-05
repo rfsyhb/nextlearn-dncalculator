@@ -68,7 +68,14 @@ export default function Home() {
                   className='rounded-md object-contain'
                 />
                 <div className='flex flex-1 items-center'>
-                  <span className='w-14 text-right font-mono'>{count}</span>
+                  {
+                    item.name == 'Raw Gold' ? (
+                      <span className='w-14 text-right font-mono'>{count.toFixed(1)}</span>
+                    ) : (
+                      <span className='w-14 text-right font-mono'>{count}</span>
+                    )
+                  }
+                  
                   <span className='mx-2 font-mono'>
                     x {price != null ? price.toFixed(2) : 'n/a'}
                   </span>
