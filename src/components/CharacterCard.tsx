@@ -20,7 +20,7 @@ export default function CharacterCard({ name }: CharacterProps) {
   const start = times[name]?.startTime;
   const end = times[name]?.endTime;
   const timeSpent = start && end ? end - start : null;
-  const duration = timeSpent ? Math.floor(timeSpent / 1000)/60+' min' : ''; // in seconds
+  const duration = timeSpent ? (Math.floor(timeSpent / 1000)/60).toFixed(1)+' min' : ''; // in seconds
 
   return (
     <div className='rounded-md bg-gray-700 p-2 min-w-60 max-w-60 flex flex-col gap-2 min-h-22 max-h-fit'>
