@@ -117,14 +117,14 @@ export default function CharacterInventory({
           <div className='flex gap-1'>
             <button
               onClick={() => setEndTime(currentCharacter)}
-              disabled={!!currentTime?.endTime}
+              disabled={!currentTime?.startTime}
               className={`px-3 py-1 rounded text-white ${
                 currentTime?.endTime
                   ? 'hidden'
                   : 'bg-blue-800 hover:bg-blue-700'
               }`}
             >
-              add finish time
+              {!currentTime?.startTime ? 'add start time first!' : 'add finish time'}
             </button>
             <button
               onClick={() => removeEndTime(currentCharacter)}
