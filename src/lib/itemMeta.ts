@@ -41,4 +41,24 @@ export const itemMetas: ItemMeta[] = [
     name: "Mid Grade Diamond Code",
     image_url: "/midGradeDiamondCode.png",
   },
+  {
+    key: "midGradeAgateCodeUnique",
+    name: "Mid Grade Agate Code Unique",
+    image_url: "/midGradeAgateCodeUnique.png",
+  },
+  {
+    key: "midGradeCrystalCodeUnique",
+    name: "Mid Grade Crystal CodeUnique",
+    image_url: "/midGradeCrystalCodeUnique.png",
+  },
+  {
+    key: "midGradeDiamondCodeUnique",
+    name: "Mid Grade Diamond Code Unique",
+    image_url: "/midGradeDiamondCodeUnique.png",
+  },
+  {
+    key: "essenceOfLife",
+    name: "Essence of Life",
+    image_url: "/essenceOfLife.png",
+  },
 ];

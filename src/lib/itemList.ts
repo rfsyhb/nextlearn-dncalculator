@@ -7,4 +7,8 @@ export const ITEM_KEYS = [
   'midGradeAgateCode',
   'midGradeCrystalCode',
   'midGradeDiamondCode',
+  'midGradeAgateCodeUnique',
+  'midGradeCrystalCodeUnique',
+  'midGradeDiamondCodeUnique',
+  'essenceOfLife'
 ] as const;
