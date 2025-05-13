@@ -7,6 +7,7 @@ export default function Header() {
   const isHome = pathName === '/';
   const isDashboard = pathName.startsWith('/dashboard');
   const isItem = pathName.startsWith('/item');
+  const isUtility = pathName.startsWith('/utility');
 
   return (
     <header className='flex gap-2 items-center justify-center bg-foreground text-background p-2'>
@@ -39,6 +40,14 @@ export default function Header() {
           }`}
         >
           Item Prices
+        </Link>
+        <Link
+          href='/utility'
+          className={`rounded-md px-2 ${
+            isUtility ? 'bg-slate-700 text-white' : 'hover:bg-gray-400'
+          }`}
+        >
+          Cash to Gold Converter
         </Link>
       </nav>
     </header>
