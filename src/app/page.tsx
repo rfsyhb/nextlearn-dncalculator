@@ -44,7 +44,7 @@ export default function Home() {
 
   return (
     <main className='justify-center items-center h-full flex flex-col gap-4 p-4 overflow-auto'>
-      <div className='flex flex-1 overflow-auto flex-wrap flex-row gap-1 justify-center'>
+      <div className='flex overflow-auto flex-wrap flex-row gap-1 justify-center'>
         {characters.length > 0 &&
           characters.map((name) => {
             return <CharacterCard key={name} name={name} />;
