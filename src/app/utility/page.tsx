@@ -57,7 +57,7 @@ export default function Utility() {
           {cashToConvert === 0 ? (
             <span className='text-red-500 text-lg'>Cash belum ditentukan!</span>
           ) : (
-              <span className='text-green-500 text-lg'>Total gold yang didapat: <span className='text-yellow-300'>{cashToGoldRate.toFixed(2)} gold</span></span>
+              <span className='text-green-500 text-lg'>Total gold yang setara dengan cash: <span className='text-yellow-300'>{cashToGoldRate.toFixed(2)} gold</span></span>
           )}
         </section>
       </div>
