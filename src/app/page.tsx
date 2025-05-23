@@ -11,7 +11,20 @@ import { useMemo } from 'react';
 export default function Home() {
   const characters = useCharacterStore((s) => s.characters);
   const inventories = useInventoryStore((s) => s.inventories);
+  const times = useInventoryStore((s) => s.times);
   const prices = usePriceStore((s) => s.prices);
+
+  // Mengambil semua nilai 'totalTimeSpent' dari times dari semua karakter
+  const grandTotalTimeSpent = characters.reduce((sum, name) => {
+    const timeData = times[name];
+    if (timeData) {
+      const { startTime, endTime } = timeData;
+      if (startTime && endTime) {
+        return sum + (endTime - startTime || 0);
+      }
+    }
+    return sum;
+  }, 0);
 
   // Hitung total tiap itemKey menggunakan Object.values(...)
   const totals = useMemo(() => {
@@ -98,6 +111,9 @@ export default function Home() {
             <span>pajak th dawg: {tax.toFixed(2)} gold</span>
             <span className='font-sans font-semibold text-lg'>
               Grand Total: {afterTax.toLocaleString()} gold
+            </span>
+            <span className='text-sm text-gray-400'>
+              Total waktu: {((grandTotalTimeSpent / 1000)/60).toFixed(2)} menit
             </span>
           </div>
         </div>
